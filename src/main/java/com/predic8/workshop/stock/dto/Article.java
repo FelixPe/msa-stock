@@ -2,7 +2,7 @@ package com.predic8.workshop.stock.dto;
 
 public class Article {
 	private String articleId;
-	private long quantity;
+	private Long quantity;
 
 	public Article() {
 	}
@@ -11,7 +11,7 @@ public class Article {
 		return this.articleId;
 	}
 
-	public long getQuantity() {
+	public Long getQuantity() {
 		return this.quantity;
 	}
 

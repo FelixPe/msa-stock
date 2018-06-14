@@ -5,6 +5,8 @@
 
     <springProperty scope="context" name="service" source="spring.application.name"/>
     <springProperty scope="context" name="group-id" source="spring.kafka.consumer.group-id"/>
+    <springProperty scope="context" name="instancename" source="spring.application.instancename"/>
+
 
     <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="jsonStdout" />

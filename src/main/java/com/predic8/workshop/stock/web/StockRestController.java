@@ -36,6 +36,7 @@ public class StockRestController {
 
 	@GetMapping
 	public List<Stock> index() {
+		// return articles.values();
 		return articles.entrySet().stream().map(Entry::getValue).collect(toList());
 	}
 
@@ -48,6 +49,20 @@ public class StockRestController {
 		}
 
 		return stock;
+	}
+
+	@DeleteMapping("/{uuid}")
+	public void delStock(@PathVariable String uuid) throws Exception {
+		Stock stock = articles.get(uuid);
+
+		if (stock == null) {
+			throw new NotFoundException();
+		}
+
+		Operation op = new Operation("article", "delete", mapper.valueToTree(stock));
+		op.logSend();
+
+		kafka.send("shop", op).get(100, TimeUnit.MILLISECONDS);
 	}
 
 	@PatchMapping("/{uuid}")
@@ -63,7 +78,6 @@ public class StockRestController {
 		updateBo.setUuid(uuid);
 
 		Operation op = new Operation("article", "update", mapper.valueToTree(updateBo));
-
 		op.logSend();
 
 		kafka.send("shop", op).get(100, TimeUnit.MILLISECONDS);

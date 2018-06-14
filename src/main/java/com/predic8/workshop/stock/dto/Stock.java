@@ -2,12 +2,12 @@ package com.predic8.workshop.stock.dto;
 
 public class Stock {
 	private String uuid;
-    private long quantity;
+    private Long quantity;
 
 	public Stock() {
 	}
 
-	public Stock(String uuid, long quantity) {
+	public Stock(String uuid, Long quantity) {
 		this.uuid = uuid;
 		this.quantity = quantity;
 	}
@@ -20,11 +20,11 @@ public class Stock {
 		return this.uuid;
 	}
 
-	public void setQuantity(long quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 
-	public long getQuantity() {
+	public Long getQuantity() {
 		return this.quantity;
 	}
 
